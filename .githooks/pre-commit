@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+# SwiftLint Pre-commit Hook
+# Runs SwiftLint on all staged Swift files before committing
+#
+
+# Detect if running on Apple Silicon and set PATH accordingly
+if [[ "$(uname -m)" == arm64 ]]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+fi
+
+# Check if SwiftLint is installed
+if ! which swiftlint > /dev/null; then
+    echo "warning: SwiftLint not installed, skipping pre-commit hook"
+    echo "Install SwiftLint: brew install swiftlint"
+    exit 0
+fi
+
+# Get list of staged Swift files
+STAGED_SWIFT_FILES=$(git diff --cached --name-only --diff-filter=d | grep "\.swift$")
+
+# Exit if no Swift files are staged
+if [ -z "$STAGED_SWIFT_FILES" ]; then
+    exit 0
+fi
+
+echo "Running SwiftLint on staged files..."
+
+# Create a temporary file list for SwiftLint
+TEMP_FILE=$(mktemp)
+echo "$STAGED_SWIFT_FILES" > "$TEMP_FILE"
+
+# Run SwiftLint on staged files only
+swiftlint lint --use-script-input-files --force-exclude < "$TEMP_FILE"
+SWIFTLINT_EXIT_CODE=$?
+
+# Clean up
+rm "$TEMP_FILE"
+
+# Exit with SwiftLint's exit code
+if [ $SWIFTLINT_EXIT_CODE -ne 0 ]; then
+    echo ""
+    echo "SwiftLint found issues. Please fix them before committing."
+    echo "To bypass this check, use: git commit --no-verify"
+    exit 1
+fi
+
+echo "SwiftLint passed!"
+exit 0

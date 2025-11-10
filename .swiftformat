@@ -1,0 +1,71 @@
+# SwiftFormat Configuration for Heauton
+
+# File options
+--swiftversion 5.9
+--exclude Pods,Carthage,.build,DerivedData
+
+# Format options
+--indent 4
+--indentcase false
+--trimwhitespace always
+--nospaceoperators ...,..<
+--ifdef no-indent
+--voidtype void
+--wraparguments before-first
+--wrapparameters before-first
+--wrapcollections before-first
+--closingparen balanced
+--hexliteralcase uppercase
+--exponentcase uppercase
+
+# Enabled rules
+--enable isEmpty
+--enable sortImports
+--enable duplicateImports
+--enable blankLinesAtStartOfScope
+--enable blankLinesAtEndOfScope
+--enable blankLinesBetweenScopes
+--enable consecutiveSpaces
+--enable redundantBackticks
+--enable redundantBreak
+--enable redundantExtensionACL
+--enable redundantFileprivate
+--enable redundantGet
+--enable redundantInit
+--enable redundantLet
+--enable redundantLetError
+--enable redundantNilInit
+--enable redundantObjc
+--enable redundantParens
+--enable redundantPattern
+--enable redundantRawValues
+--enable redundantReturn
+--enable redundantType
+--enable redundantVoidReturnType
+--enable semicolons
+--enable spaceAroundBraces
+--enable spaceAroundBrackets
+--enable spaceAroundComments
+--enable spaceAroundGenerics
+--enable spaceAroundOperators
+--enable spaceInsideBraces
+--enable spaceInsideBrackets
+--enable spaceInsideComments
+--enable spaceInsideGenerics
+--enable spaceInsideParens
+--enable strongOutlets
+--enable trailingClosures
+--enable trailingCommas
+--enable typeSugar
+--enable unusedArguments
+--enable void
+--enable wrapArguments
+--enable wrapAttributes
+--enable numberFormatting
+--enable andOperator
+--enable leadingDelimiters
+
+# Disabled rules
+--disable hoistPatternLet
+--disable wrapMultilineStatementBraces
+--disable redundantSelf
