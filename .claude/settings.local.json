@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(swiftlint lint:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(xcodebuild:*)",
+      "Bash(xcrun simctl:*)",
+      "Bash(tee:*)",
+      "Bash(cat:*)",
+      "Bash(tree:*)",
+      "Bash(swiftformat --lint:*)",
+      "Bash(swift test:*)",
+      "Bash(pkill:*)",
+      "Bash(swiftlint version:*)",
+      "WebSearch",
+      "Bash(brew outdated:*)",
+      "Bash(swift --version:*)",
+      "Bash(brew upgrade:*)",
+      "Bash(brew list:*)",
+      "Bash(awk:*)",
+      "Bash(plutil:*)",
+      "Bash(swiftformat:*)",
+      "Bash(swiftlint:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
