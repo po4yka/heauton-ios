@@ -114,7 +114,7 @@ struct BreathingExerciseView: View {
                                     .font(.title2)
                                     .foregroundStyle(.white)
                                     .frame(width: 60, height: 60)
-                                    .background(Circle().fill(.green))
+                                    .background(Circle().fill(.lsGunmetal))
                             }
                         } else if vm.showPauseButton {
                             // Pause button
@@ -125,7 +125,7 @@ struct BreathingExerciseView: View {
                                     .font(.title2)
                                     .foregroundStyle(.white)
                                     .frame(width: 60, height: 60)
-                                    .background(Circle().fill(.orange))
+                                    .background(Circle().fill(.lsIronGrey))
                             }
                         }
 
@@ -139,7 +139,7 @@ struct BreathingExerciseView: View {
                                 .font(.title2)
                                 .foregroundStyle(.white)
                                 .frame(width: 60, height: 60)
-                                .background(Circle().fill(.red))
+                                .background(Circle().fill(.lsShadowGrey))
                         }
                     }
                     .padding(.bottom, 40)

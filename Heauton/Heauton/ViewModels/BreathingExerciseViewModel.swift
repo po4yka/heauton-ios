@@ -23,11 +23,11 @@ final class BreathingExerciseViewModel {
     var gradientColors: [Color] {
         switch timerService.currentPhase {
         case .inhale:
-            [.blue.opacity(0.6), .purple.opacity(0.6)]
+            [.lsPaleSlate.opacity(0.6), .lsSlateGrey.opacity(0.6)]
         case .hold1, .hold2:
-            [.purple.opacity(0.6), .indigo.opacity(0.6)]
+            [.lsSlateGrey.opacity(0.6), .lsIronGrey.opacity(0.6)]
         case .exhale:
-            [.indigo.opacity(0.6), .blue.opacity(0.6)]
+            [.lsIronGrey.opacity(0.6), .lsGunmetal.opacity(0.6)]
         }
     }
 

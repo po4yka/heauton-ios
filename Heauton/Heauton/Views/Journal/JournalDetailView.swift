@@ -21,9 +21,16 @@ struct JournalDetailView: View {
                         if let mood = entry.mood {
                             Text("•")
                                 .foregroundStyle(.secondary)
-                            Text(mood.emoji + " " + mood.displayName)
-                                .font(.firaCodeCaption())
-                                .foregroundStyle(.secondary)
+
+                            HStack(spacing: 6) {
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(mood.color.opacity(0.3))
+                                    .frame(width: 4, height: 16)
+
+                                Text(mood.emoji + " " + mood.displayName)
+                                    .font(.firaCodeCaption())
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     }
                 }
@@ -44,8 +51,8 @@ struct JournalDetailView: View {
                                     .font(.firaCodeCaption())
                                     .padding(.horizontal, 12)
                                     .padding(.vertical, 6)
-                                    .background(Color.blue.opacity(0.1))
-                                    .foregroundStyle(.blue)
+                                    .background(Color.lsPaleSlate.opacity(0.3))
+                                    .foregroundStyle(.appPrimary)
                                     .clipShape(Capsule())
                             }
                         }
@@ -86,7 +93,7 @@ struct JournalDetailView: View {
                             "Favorite",
                             systemImage: entry.isFavorite ? "heart.fill" : "heart"
                         )
-                        .foregroundStyle(entry.isFavorite ? .red : .primary)
+                        .foregroundStyle(entry.isFavorite ? .accentFavorite : .primary)
                     }
 
                     Button {

@@ -72,28 +72,28 @@ struct DataManagementView: View {
                     title: "Journal Entries",
                     count: info.journalEntryCount,
                     icon: "book.closed.fill",
-                    color: .purple
+                    color: .appSecondary
                 )
 
                 StorageInfoRow(
                     title: "Quotes",
                     count: info.quoteCount,
                     icon: "quote.bubble.fill",
-                    color: .blue
+                    color: .appPrimary
                 )
 
                 StorageInfoRow(
                     title: "Exercises",
                     count: info.exerciseCount,
                     icon: "figure.mind.and.body",
-                    color: .green
+                    color: .lsGunmetal
                 )
 
                 StorageInfoRow(
                     title: "Progress Snapshots",
                     count: info.progressSnapshotCount,
                     icon: "chart.line.uptrend.xyaxis",
-                    color: .orange
+                    color: .lsIronGrey
                 )
 
                 HStack {
@@ -173,7 +173,7 @@ struct DataManagementView: View {
             VStack(alignment: .leading, spacing: 12) {
                 Label("Your Data is Private", systemImage: "lock.shield.fill")
                     .font(.firaCodeSubheadline(.medium))
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.appPrimary)
 
                 Text(
                     "All exports are saved locally on your device. " +
@@ -355,7 +355,7 @@ struct ExportOptionsSheet: View {
                         title: "Journals (JSON)",
                         description: "Export all journal entries with metadata",
                         icon: "book.closed.fill",
-                        color: .purple
+                        color: .appSecondary
                     ) {
                         onExport(.journalsJSON)
                         dismiss()
@@ -365,7 +365,7 @@ struct ExportOptionsSheet: View {
                         title: "Journals (CSV)",
                         description: "Export journal entries as spreadsheet",
                         icon: "tablecells.fill",
-                        color: .purple
+                        color: .appSecondary
                     ) {
                         onExport(.journalsCSV)
                         dismiss()
@@ -379,7 +379,7 @@ struct ExportOptionsSheet: View {
                         title: "Quotes (JSON)",
                         description: "Export all quotes with metadata",
                         icon: "quote.bubble.fill",
-                        color: .blue
+                        color: .appPrimary
                     ) {
                         onExport(.quotesJSON)
                         dismiss()
@@ -389,7 +389,7 @@ struct ExportOptionsSheet: View {
                         title: "Quotes (CSV)",
                         description: "Export quotes as spreadsheet",
                         icon: "tablecells.fill",
-                        color: .blue
+                        color: .appPrimary
                     ) {
                         onExport(.quotesCSV)
                         dismiss()
@@ -403,7 +403,7 @@ struct ExportOptionsSheet: View {
                         title: "Exercises (JSON)",
                         description: "Export all exercises and sessions",
                         icon: "figure.mind.and.body",
-                        color: .green
+                        color: .lsGunmetal
                     ) {
                         onExport(.exercisesJSON)
                         dismiss()
@@ -413,7 +413,7 @@ struct ExportOptionsSheet: View {
                         title: "Progress (JSON)",
                         description: "Export progress snapshots and stats",
                         icon: "chart.line.uptrend.xyaxis",
-                        color: .orange
+                        color: .lsIronGrey
                     ) {
                         onExport(.progressJSON)
                         dismiss()
@@ -427,7 +427,7 @@ struct ExportOptionsSheet: View {
                         title: "Complete Backup",
                         description: "Export everything in one file",
                         icon: "doc.zipper",
-                        color: .red
+                        color: .lsShadowGrey
                     ) {
                         onExport(.completeBackup)
                         dismiss()

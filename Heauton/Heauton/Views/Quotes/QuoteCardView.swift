@@ -64,11 +64,11 @@ struct QuoteCardView: View {
     private var gradientColors: [Color] {
         switch style {
         case .minimal:
-            [.gray.opacity(0.8), .gray]
+            [.lsPaleSlate.opacity(0.8), .lsSlateGrey.opacity(0.8)]
         case .card:
-            [.blue.opacity(0.8), .purple.opacity(0.8)]
+            [.lsSlateGrey.opacity(0.8), .lsIronGrey.opacity(0.8)]
         case .attributed:
-            [.indigo.opacity(0.8), .pink.opacity(0.8)]
+            [.lsIronGrey.opacity(0.8), .lsGunmetal.opacity(0.8)]
         }
     }
 }

@@ -14,22 +14,23 @@ struct ExerciseDetailView: View {
                 // Header
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
+                        // Exercise type icon with color
                         Image(systemName: exercise.type.icon)
                             .font(.title)
-                            .foregroundStyle(.blue)
+                            .foregroundStyle(exercise.type.color)
 
                         Spacer()
 
-                        // Difficulty badge
+                        // Difficulty badge with color
                         Text(exercise.difficulty.displayName)
                             .font(.firaCodeCaption())
                             .padding(.horizontal, 12)
                             .padding(.vertical, 6)
                             .background(
-                                Color(exercise.difficulty.color)
+                                exercise.difficulty.swiftUIColor
                                     .opacity(0.2)
                             )
-                            .foregroundStyle(Color(exercise.difficulty.color))
+                            .foregroundStyle(exercise.difficulty.swiftUIColor)
                             .clipShape(Capsule())
                     }
 
@@ -79,9 +80,9 @@ struct ExerciseDetailView: View {
                         HStack(alignment: .top, spacing: 12) {
                             Text("\(index + 1)")
                                 .font(.firaCodeCaption(.semiBold))
-                                .foregroundStyle(.white)
+                                .foregroundStyle(.lsBrightSnow)
                                 .frame(width: 24, height: 24)
-                                .background(Circle().fill(.blue))
+                                .background(Circle().fill(.appPrimary))
 
                             Text(instruction)
                                 .font(.firaCodeBody())
@@ -106,8 +107,8 @@ struct ExerciseDetailView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(.blue)
-                .foregroundStyle(.white)
+                .background(.appPrimary)
+                .foregroundStyle(.lsBrightSnow)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             .padding()
@@ -154,7 +155,7 @@ private struct GenericExerciseView: View {
 
     var body: some View {
         ZStack {
-            Color.black
+            Color.lsShadowGrey
                 .ignoresSafeArea()
 
             VStack(spacing: 40) {
@@ -173,10 +174,10 @@ private struct GenericExerciseView: View {
 
                 Spacer()
 
-                // Exercise icon
+                // Exercise icon with type color
                 Image(systemName: exercise.type.icon)
                     .font(.system(size: 80))
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(exercise.type.color)
 
                 // Exercise title
                 Text(exercise.title)
@@ -222,7 +223,7 @@ private struct GenericExerciseView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(isRunning ? .orange : .blue)
+                    .background(isRunning ? .lsIronGrey : exercise.type.color)
                     .foregroundStyle(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                 }

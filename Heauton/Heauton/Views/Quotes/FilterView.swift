@@ -99,10 +99,10 @@ struct FilterView: View {
 
                 // Clear filters
                 Section {
-                    Button("Clear All Filters") {
+                    Button("Clear All Filters", role: .destructive) {
                         tempFilter = .default
                     }
-                    .foregroundStyle(.red)
+                    .foregroundStyle(.accentDanger)
                 }
             }
             .navigationTitle("Filter Quotes")

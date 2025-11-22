@@ -109,11 +109,58 @@ sequenceDiagram
     Widget->>SwiftData: Shared Container Access
 ```
 
+## Design System
+
+Heauton iOS features the **Light Steel** monochrome color palette - a refined 9-shade grayscale system that creates a serene, distraction-free environment for mindfulness and personal reflection.
+
+### Color Palette
+
+```
+Light Spectrum (Backgrounds & Surfaces)
+F8F9FA  Bright Snow      - Primary backgrounds, main canvas
+E9ECEF  Platinum         - Cards, modals, elevated surfaces
+DEE2E6  Alabaster Grey   - Borders, dividers, input outlines
+CED4DA  Pale Slate       - Secondary borders, disabled states
+ADB5BD  Pale Slate 2     - Tertiary text, subtle icons
+
+Dark Spectrum (Text & Interactive)
+6C757D  Slate Grey       - Secondary text, metadata
+495057  Iron Grey        - Primary actions, brand color
+343A40  Gunmetal         - Headings, emphasis text
+212529  Shadow Grey      - Body text, maximum contrast
+```
+
+### Design Philosophy
+
+- **Mental clarity** - Monochrome design reduces cognitive load
+- **Accessibility excellence** - WCAG AAA contrast ratios throughout
+- **Native iOS integration** - Works seamlessly with SF Symbols and system components
+- **Timeless aesthetics** - Professional, elegant visual language
+
+### Implementation
+
+Colors are defined in a SwiftUI extension with semantic mappings:
+
+```swift
+// Semantic color usage (recommended)
+.background(.appBackground)         // Bright Snow
+.foregroundStyle(.appText)          // Shadow Grey
+.foregroundStyle(.appTextSecondary) // Gunmetal
+
+// Direct palette access
+.background(.lsBrightSnow)
+.foregroundStyle(.lsShadowGrey)
+.tint(.appPrimary)                  // Iron Grey
+```
+
+The color system supports light/dark mode and integrates naturally with SwiftUI's adaptive colors. For comprehensive usage guidelines, semantic mappings, and accessibility standards, see [COLOR_GUIDE.md](COLOR_GUIDE.md).
+
 ## Tech Stack
 
 | Category | Technologies |
 |----------|-------------|
 | **Platform** | iOS 17+, Swift 5.9+, SwiftUI |
+| **Design** | Light Steel Monochrome Palette |
 | **Concurrency** | Structured Concurrency (async/await, Actor) |
 | **Persistence** | SwiftData, GRDB (FTS5), File Storage |
 | **Search** | GRDB FTS5 with BM25 ranking |

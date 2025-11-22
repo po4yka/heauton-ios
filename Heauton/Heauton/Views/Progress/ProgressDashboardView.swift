@@ -30,28 +30,28 @@ struct ProgressDashboardView: View {
                                     title: "Quotes",
                                     value: "\(stats.totalQuotes)",
                                     icon: "quote.bubble",
-                                    color: .blue
+                                    color: .appPrimary
                                 )
 
                                 StatCard(
                                     title: "Journal",
                                     value: "\(stats.totalJournalEntries)",
                                     icon: "book.closed",
-                                    color: .purple
+                                    color: .appSecondary
                                 )
 
                                 StatCard(
                                     title: "Meditation",
                                     value: "\(stats.totalMeditationMinutes)m",
                                     icon: "brain.head.profile",
-                                    color: .green
+                                    color: .lsGunmetal
                                 )
 
                                 StatCard(
                                     title: "Breathing",
                                     value: "\(stats.totalBreathingSessions)",
                                     icon: "wind",
-                                    color: .orange
+                                    color: .lsIronGrey
                                 )
                             }
                         }
@@ -70,7 +70,7 @@ struct ProgressDashboardView: View {
                                 } label: {
                                     Text("View All")
                                         .font(.firaCodeCaption())
-                                        .foregroundStyle(.blue)
+                                        .foregroundStyle(.appPrimary)
                                 }
                             }
                             .padding(.horizontal)
@@ -131,7 +131,7 @@ struct StreakCard: View {
                 .font(.system(size: 50))
                 .foregroundStyle(
                     LinearGradient(
-                        colors: [.orange, .red],
+                        colors: [.lsSlateGrey, .lsGunmetal],
                         startPoint: .top,
                         endPoint: .bottom
                     )
@@ -149,7 +149,7 @@ struct StreakCard: View {
             if streak > 0 {
                 Text("Keep it going!")
                     .font(.firaCodeSubheadline())
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.appPrimary)
             } else {
                 Text("Start your journey today!")
                     .font(.firaCodeSubheadline())
@@ -203,9 +203,9 @@ struct AchievementCardCompact: View {
         VStack(spacing: 8) {
             Image(systemName: achievement.icon)
                 .font(.title)
-                .foregroundStyle(.yellow)
+                .foregroundStyle(.lsSlateGrey)
                 .frame(width: 60, height: 60)
-                .background(Circle().fill(.yellow.opacity(0.2)))
+                .background(Circle().fill(.lsPaleSlate.opacity(0.4)))
 
             Text(achievement.title)
                 .font(.firaCodeCaption(.semiBold))

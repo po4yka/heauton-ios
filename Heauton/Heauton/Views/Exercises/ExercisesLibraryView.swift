@@ -29,6 +29,7 @@ struct ExercisesLibraryView: View {
                                     FilterChip(
                                         title: type.displayName,
                                         icon: type.icon,
+                                        iconColor: type.color,
                                         isSelected: viewModel.selectedType == type
                                     ) {
                                         viewModel.selectType(type)
@@ -44,6 +45,7 @@ struct ExercisesLibraryView: View {
                                 ForEach(Difficulty.allCases, id: \.self) { difficulty in
                                     FilterChip(
                                         title: difficulty.displayName,
+                                        iconColor: difficulty.swiftUIColor,
                                         isSelected: viewModel.selectedDifficulty == difficulty
                                     ) {
                                         viewModel.toggleDifficulty(difficulty)
@@ -118,14 +120,17 @@ struct ExerciseCard: View {
 
     var body: some View {
         HStack(spacing: 16) {
-            // Icon
+            // Icon with type color
             Image(systemName: exercise.type.icon)
                 .font(.title2)
                 .foregroundStyle(.white)
                 .frame(width: 60, height: 60)
                 .background(
                     LinearGradient(
-                        colors: [.blue, .purple],
+                        colors: [
+                            exercise.type.color,
+                            exercise.type.color.opacity(0.7)
+                        ],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
@@ -144,7 +149,7 @@ struct ExerciseCard: View {
                     if exercise.isFavorite {
                         Image(systemName: "heart.fill")
                             .font(.caption)
-                            .foregroundStyle(.red)
+                            .foregroundStyle(.lsShadowGrey)
                     }
                 }
 
@@ -156,9 +161,16 @@ struct ExerciseCard: View {
                     Text("•")
                         .foregroundStyle(.secondary)
 
+                    // Difficulty badge with color
                     Text(exercise.difficulty.displayName)
-                        .font(.firaCodeCaption())
-                        .foregroundStyle(Color(exercise.difficulty.color))
+                        .font(.system(size: 11, weight: .medium))
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 3)
+                        .background(
+                            Capsule()
+                                .fill(exercise.difficulty.swiftUIColor.opacity(0.15))
+                        )
+                        .foregroundStyle(exercise.difficulty.swiftUIColor)
 
                     Text("•")
                         .foregroundStyle(.secondary)
@@ -185,12 +197,20 @@ struct ExerciseCard: View {
 struct FilterChip: View {
     let title: String
     var icon: String?
+    var iconColor: Color?
     let isSelected: Bool
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             HStack(spacing: 6) {
+                // Color indicator dot
+                if let iconColor, !isSelected {
+                    Circle()
+                        .fill(iconColor)
+                        .frame(width: 8, height: 8)
+                }
+
                 if let icon {
                     Image(systemName: icon)
                         .font(.caption)
@@ -203,7 +223,9 @@ struct FilterChip: View {
             .padding(.vertical, 8)
             .background(
                 Capsule()
-                    .fill(isSelected ? Color.blue : Color.gray.opacity(0.2))
+                    .fill(isSelected
+                        ? (iconColor ?? .appPrimary)
+                        : Color.lsPaleSlate.opacity(0.2))
             )
             .foregroundStyle(isSelected ? .white : .primary)
         }

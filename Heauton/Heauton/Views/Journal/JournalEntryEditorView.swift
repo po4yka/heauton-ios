@@ -106,10 +106,16 @@ private struct MoodButton: View {
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
-            .background(isSelected ? Color.blue.opacity(0.2) : Color.clear)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(isSelected ? mood.color.opacity(0.2) : Color.clear)
+            )
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(isSelected ? Color.blue : Color.gray.opacity(0.3), lineWidth: 1.5)
+                    .stroke(
+                        isSelected ? mood.color : Color.lsPaleSlate.opacity(0.3),
+                        lineWidth: isSelected ? 2 : 1
+                    )
             )
         }
         .buttonStyle(.plain)
@@ -139,8 +145,8 @@ struct TagInputView: View {
                             }
                             .padding(.horizontal, 10)
                             .padding(.vertical, 6)
-                            .background(Color.blue.opacity(0.1))
-                            .foregroundStyle(.blue)
+                            .background(Color.appPrimary.opacity(0.1))
+                            .foregroundStyle(.appPrimary)
                             .clipShape(Capsule())
                         }
                     }

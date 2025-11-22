@@ -33,7 +33,7 @@ struct AchievementsView: View {
                         Text("\(Int(progressPercentage * 100))%")
                             .font(.firaCodeCaption())
                     }
-                    .tint(.blue)
+                    .tint(.appPrimary)
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
@@ -110,22 +110,39 @@ struct AchievementCard: View {
 
     var body: some View {
         HStack(spacing: 16) {
-            // Icon
+            // Icon with category color
             ZStack {
                 Circle()
-                    .fill(achievement.isUnlocked ? .yellow.opacity(0.2) : .gray.opacity(0.1))
+                    .fill(achievement.isUnlocked
+                        ? achievement.category.color.opacity(0.2)
+                        : .lsPaleSlate.opacity(0.1))
                     .frame(width: 60, height: 60)
 
                 Image(systemName: achievement.icon)
                     .font(.title2)
-                    .foregroundStyle(achievement.isUnlocked ? .yellow : .gray)
+                    .foregroundStyle(achievement.isUnlocked
+                        ? achievement.category.color
+                        : .lsPaleSlate)
             }
 
             // Info
             VStack(alignment: .leading, spacing: 6) {
-                Text(achievement.title)
-                    .font(.firaCodeSubheadline(.semiBold))
-                    .foregroundStyle(achievement.isUnlocked ? .primary : .secondary)
+                HStack(spacing: 8) {
+                    Text(achievement.title)
+                        .font(.firaCodeSubheadline(.semiBold))
+                        .foregroundStyle(achievement.isUnlocked ? .primary : .secondary)
+
+                    // Category badge
+                    Text(achievement.category.displayName)
+                        .font(.system(size: 10, weight: .medium))
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 2)
+                        .background(
+                            Capsule()
+                                .fill(achievement.category.color.opacity(0.15))
+                        )
+                        .foregroundStyle(achievement.category.color)
+                }
 
                 Text(achievement.achievementDescription)
                     .font(.firaCodeCaption())
@@ -136,7 +153,7 @@ struct AchievementCard: View {
                 if !achievement.isUnlocked {
                     HStack(spacing: 8) {
                         ProgressView(value: achievement.progressPercentage)
-                            .tint(.blue)
+                            .tint(.appPrimary)
 
                         Text(achievement.progressString)
                             .font(.firaCodeCaption())
@@ -146,7 +163,7 @@ struct AchievementCard: View {
                 } else if let unlockedAt = achievement.unlockedAt {
                     Text("Unlocked \(unlockedAt.formatted(date: .abbreviated, time: .omitted))")
                         .font(.firaCodeCaption())
-                        .foregroundStyle(.green)
+                        .foregroundStyle(.lsGunmetal)
                 }
             }
 
@@ -155,7 +172,7 @@ struct AchievementCard: View {
             if achievement.isUnlocked {
                 Image(systemName: "checkmark.circle.fill")
                     .font(.title3)
-                    .foregroundStyle(.green)
+                    .foregroundStyle(.semanticSuccess)
             }
         }
         .padding()

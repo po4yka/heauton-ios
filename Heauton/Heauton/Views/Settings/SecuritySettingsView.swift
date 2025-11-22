@@ -20,7 +20,7 @@ struct SecuritySettingsView: View {
                             .font(.firaCodeCaption())
                     } icon: {
                         Image(systemName: "exclamationmark.triangle")
-                            .foregroundStyle(.orange)
+                            .foregroundStyle(.lsIronGrey)
                     }
                 }
             } header: {
@@ -56,7 +56,7 @@ struct SecuritySettingsView: View {
                             .font(.firaCodeSubheadline(.semiBold))
                     } icon: {
                         Image(systemName: "lock.shield.fill")
-                            .foregroundStyle(.green)
+                            .foregroundStyle(.lsGunmetal)
                     }
 
                     Text(

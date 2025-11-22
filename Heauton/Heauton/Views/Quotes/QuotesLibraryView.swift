@@ -64,7 +64,7 @@ struct QuotesLibraryView: View {
                         .overlay(alignment: .topTrailing) {
                             if filter.isActive {
                                 Circle()
-                                    .fill(.red)
+                                    .fill(.lsShadowGrey)
                                     .frame(width: 8, height: 8)
                                     .offset(x: 4, y: -4)
                             }
@@ -153,7 +153,7 @@ private struct QuoteRowView: View {
                 if quote.isFavorite {
                     Image(systemName: "heart.fill")
                         .font(.caption)
-                        .foregroundStyle(.red)
+                        .foregroundStyle(.accentFavorite)
                 }
             }
         }

@@ -51,7 +51,7 @@ struct TabBarView: View {
                 }
                 .tag(5)
         }
-        .tint(.primary) // Use system primary color for selected tab items
+        .tint(.appPrimary)
     }
 }
 

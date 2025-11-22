@@ -14,7 +14,7 @@ struct AppLockView: View {
         ZStack {
             // Background
             LinearGradient(
-                colors: [.blue.opacity(0.3), .purple.opacity(0.3)],
+                colors: [.appPrimary.opacity(0.3), .appSecondary.opacity(0.3)],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
@@ -80,7 +80,7 @@ struct AppLockView: View {
                 if showError {
                     Text(errorMessage)
                         .font(.firaCodeCaption())
-                        .foregroundStyle(.red)
+                        .foregroundStyle(.lsShadowGrey)
                         .padding(.horizontal)
                         .multilineTextAlignment(.center)
                 }

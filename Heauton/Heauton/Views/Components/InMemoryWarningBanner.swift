@@ -71,7 +71,7 @@ struct InMemoryWarningBanner: View {
                         }
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                        .foregroundColor(.red)
+                        .foregroundColor(.lsShadowGrey)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 6)
                         .background(Color.white)
@@ -84,9 +84,9 @@ struct InMemoryWarningBanner: View {
             .padding(.vertical, 12)
             .background(
                 LinearGradient(
-                    colors: [Color.red, Color.orange],
-                    startPoint: .leading,
-                    endPoint: .trailing
+                    colors: [.semanticWarning, .semanticError],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
                 )
             )
 
@@ -113,7 +113,7 @@ struct InMemoryWarningBanner: View {
                     HStack(alignment: .top, spacing: 12) {
                         Image(systemName: "exclamationmark.triangle.fill")
                             .font(.title)
-                            .foregroundColor(.red)
+                            .foregroundColor(.lsShadowGrey)
 
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Critical Storage Issue")
@@ -129,7 +129,7 @@ struct InMemoryWarningBanner: View {
                         }
                     }
                     .padding()
-                    .background(Color.red.opacity(0.1))
+                    .background(Color.lsAlabasterGrey.opacity(0.3))
                     .cornerRadius(12)
 
                     // What this means
@@ -146,7 +146,7 @@ struct InMemoryWarningBanner: View {
                         }
                     }
                     .padding()
-                    .background(Color.orange.opacity(0.1))
+                    .background(Color.lsPaleSlate.opacity(0.3))
                     .cornerRadius(12)
 
                     // Error details
@@ -180,7 +180,7 @@ struct InMemoryWarningBanner: View {
                         }
                     }
                     .padding()
-                    .background(Color.blue.opacity(0.1))
+                    .background(Color.lsPaleSlate2.opacity(0.3))
                     .cornerRadius(12)
 
                     // Duration info
@@ -213,7 +213,7 @@ struct InMemoryWarningBanner: View {
             VStack(spacing: 20) {
                 Image(systemName: "square.and.arrow.up.circle.fill")
                     .font(.system(size: 60))
-                    .foregroundColor(.blue)
+                    .foregroundColor(.appPrimary)
 
                 Text("Export Your Data")
                     .font(.title2)
@@ -231,7 +231,7 @@ struct InMemoryWarningBanner: View {
                     bulletPoint("Import the file after reinstalling the app")
                 }
                 .padding()
-                .background(Color.blue.opacity(0.1))
+                .background(Color.lsPaleSlate.opacity(0.3))
                 .cornerRadius(12)
 
                 Spacer()
@@ -249,7 +249,7 @@ struct InMemoryWarningBanner: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.blue)
+                        .background(Color.appPrimary)
                         .cornerRadius(12)
                     }
 

@@ -20,7 +20,7 @@ struct ExerciseCompletionView: View {
                     VStack(spacing: 16) {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.system(size: 80))
-                            .foregroundStyle(.green)
+                            .foregroundStyle(.semanticSuccess)
 
                         Text("Exercise Complete!")
                             .font(.firaCodeTitle())
@@ -31,7 +31,7 @@ struct ExerciseCompletionView: View {
 
                         Text(session.formattedDuration)
                             .font(.firaCodeTitle3())
-                            .foregroundStyle(.blue)
+                            .foregroundStyle(.appPrimary)
                     }
                     .padding(.top, 40)
 
@@ -74,7 +74,7 @@ struct ExerciseCompletionView: View {
                             .padding(8)
                             .background(
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray.opacity(0.3))
+                                    .stroke(Color.lsPaleSlate.opacity(0.3))
                             )
                     }
                     .padding(.horizontal)
@@ -127,11 +127,11 @@ private struct MoodButton: View {
             .padding(.vertical, 12)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isSelected ? Color.blue.opacity(0.2) : Color.gray.opacity(0.1))
+                    .fill(isSelected ? mood.color.opacity(0.2) : Color.lsPaleSlate.opacity(0.1))
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(isSelected ? Color.blue : Color.clear, lineWidth: 2)
+                    .stroke(isSelected ? mood.color : Color.clear, lineWidth: 2)
             )
         }
     }

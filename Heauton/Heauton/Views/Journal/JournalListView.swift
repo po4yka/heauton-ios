@@ -97,8 +97,15 @@ struct JournalEntryRow: View {
                 Spacer()
 
                 if let mood = entry.mood {
-                    Text(mood.emoji)
-                        .font(.caption)
+                    HStack(spacing: 4) {
+                        Circle()
+                            .fill(mood.color)
+                            .frame(width: 8, height: 8)
+
+                        Text(mood.emoji)
+                            .font(.caption)
+                            .foregroundStyle(.appTextSecondary)
+                    }
                 }
             }
 
@@ -117,13 +124,13 @@ struct JournalEntryRow: View {
                 if !entry.tags.isEmpty {
                     Text(entry.tags.prefix(2).joined(separator: ", "))
                         .font(.firaCodeCaption())
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(.appPrimary)
                 }
 
                 if entry.isFavorite {
                     Image(systemName: "heart.fill")
                         .font(.caption2)
-                        .foregroundStyle(.red)
+                        .foregroundStyle(.accentFavorite)
                 }
             }
         }
