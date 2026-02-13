@@ -4,7 +4,7 @@ import SwiftData
 
 /// Provides sample user events for testing and initial app setup
 enum SampleEvents {
-    private static let logger = Logger(subsystem: "com.heauton.app", category: "SampleData")
+    private static let logger = Logger(subsystem: AppConstants.Logging.subsystem, category: "SampleData")
 
     /// Seeds sample events if needed (only on first launch)
     @MainActor

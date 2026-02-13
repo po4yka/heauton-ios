@@ -3,7 +3,7 @@ import SwiftData
 
 /// Model for philosophical quotes
 ///
-/// Thread Safety: This class uses `@unchecked Sendable` due to SwiftData limitations.
+/// Thread Safety: This model is used across actor boundaries via SwiftData.
 /// ALL MUTATIONS must occur on MainActor or within MainActor-isolated contexts.
 /// See `Utilities/ThreadSafety.swift` for detailed thread safety documentation.
 @Model

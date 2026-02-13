@@ -2,13 +2,13 @@ import Foundation
 import os.log
 
 /// Represents an indexing job
-struct IndexingJob: Sendable {
+nonisolated struct IndexingJob: Sendable {
     let id: UUID
     let type: JobType
     let quotes: [Quote]
     let createdAt: Date
 
-    enum JobType: Sendable {
+    nonisolated enum JobType: Sendable {
         case initial
         case update
         case reindex
@@ -16,7 +16,7 @@ struct IndexingJob: Sendable {
 }
 
 /// Progress information for indexing operations
-struct IndexingProgress: Sendable {
+nonisolated struct IndexingProgress: Sendable {
     let jobId: UUID
     let totalItems: Int
     let processedItems: Int
@@ -34,7 +34,7 @@ struct IndexingProgress: Sendable {
 }
 
 /// Status of the indexing service
-enum IndexingStatus: Sendable {
+nonisolated enum IndexingStatus: Sendable {
     case idle
     case indexing(progress: IndexingProgress)
     case completed
@@ -79,7 +79,11 @@ actor BackgroundIndexingService: BackgroundIndexingServiceProtocol {
 
     /// Starts the indexing service
     func start() async {
-        guard status == .idle else { return }
+        if case .idle = status {
+            // no-op
+        } else {
+            return
+        }
         logger.debug("Background indexing service started")
         await processNextJob()
     }
@@ -263,7 +267,7 @@ actor BackgroundIndexingService: BackgroundIndexingServiceProtocol {
         logger.debug("Starting full reindex of \(quotes.count) quotes")
 
         // Clear existing indices
-        try await searchService.clearCache()
+        await searchService.clearCache()
 
         // Queue for indexing
         await queueIndexing(quotes: quotes, type: .reindex)
@@ -328,7 +332,7 @@ actor BackgroundIndexingService: BackgroundIndexingServiceProtocol {
 // MARK: - Supporting Types
 
 /// Statistics about indexing operations
-struct IndexingStatistics: Sendable {
+nonisolated struct IndexingStatistics: Sendable {
     let queuedJobs: Int
     let searchStats: SearchStatistics
     let status: IndexingStatus

@@ -2,7 +2,7 @@ import Foundation
 
 /// Database schema for search indexing
 /// Uses GRDB with FTS5 for full-text search with BM25 ranking
-enum SearchDatabaseSchema {
+nonisolated enum SearchDatabaseSchema {
     // MARK: - Schema Version
 
     /// Current schema version for migrations

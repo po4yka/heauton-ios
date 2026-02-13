@@ -39,10 +39,9 @@ final class ExerciseTimerService {
     }
 
     func resume() {
-        guard let pattern else { return }
+        guard pattern != nil else { return }
 
         // Resume from current phase
-        let phaseDuration = duration(for: currentPhase, in: pattern)
         startPhase(currentPhase, duration: timeRemaining)
         isRunning = true
     }
@@ -69,7 +68,9 @@ final class ExerciseTimerService {
             withTimeInterval: 1.0,
             repeats: true
         ) { [weak self] _ in
-            self?.tick()
+            MainActor.assumeIsolated {
+                self?.tick()
+            }
         }
     }
 
@@ -131,15 +132,6 @@ final class ExerciseTimerService {
 
         if let nextPhase {
             startPhase(nextPhase, duration: nextDuration)
-        }
-    }
-
-    private func duration(for phase: BreathingPhase, in pattern: BreathingPattern) -> Int {
-        switch phase {
-        case .inhale: pattern.inhale
-        case .hold1: pattern.hold1
-        case .exhale: pattern.exhale
-        case .hold2: pattern.hold2
         }
     }
 

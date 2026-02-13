@@ -245,7 +245,7 @@ extension Array {
     /// Splits array into chunks of specified size
     /// - Parameter size: Size of each chunk
     /// - Returns: Array of chunks
-    func chunked(into size: Int) -> [[Element]] {
+    nonisolated func chunked(into size: Int) -> [[Element]] {
         stride(from: 0, to: count, by: size).map {
             Array(self[$0..<Swift.min($0 + size, count)])
         }
@@ -256,10 +256,10 @@ extension Array {
 
 extension UTType {
     /// Custom type for quote content
-    static let quote = UTType(exportedAs: "com.heauton.quote")
+    nonisolated static let quote = UTType(exportedAs: "com.heauton.quote")
 
     /// Text type for general content
-    static var text: UTType {
+    nonisolated static var text: UTType {
         UTType.plainText
     }
 }

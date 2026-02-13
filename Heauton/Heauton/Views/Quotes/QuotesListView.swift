@@ -169,7 +169,7 @@ private struct QuoteRowView: View {
 
                 if quote.isFavorite {
                     Image(systemName: "heart.fill")
-                        .foregroundStyle(.accentFavorite)
+                        .foregroundStyle(Color.accentFavorite)
                         .font(.firaCodeCaption())
                 }
             }
@@ -225,7 +225,7 @@ struct SearchResultRowView: View {
                 VStack(alignment: .trailing, spacing: 4) {
                     if quote.isFavorite {
                         Image(systemName: "heart.fill")
-                            .foregroundStyle(.accentFavorite)
+                            .foregroundStyle(Color.accentFavorite)
                             .font(.firaCodeCaption())
                     }
 

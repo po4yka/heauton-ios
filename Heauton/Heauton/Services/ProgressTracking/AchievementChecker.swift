@@ -1,7 +1,7 @@
 import Foundation
 
 /// Helper for checking and updating achievement progress
-enum AchievementChecker {
+nonisolated enum AchievementChecker {
     /// Updates achievement progress based on stats and determines if it should be unlocked
     static func updateAchievement(
         _ achievement: Achievement,

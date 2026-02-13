@@ -2,7 +2,7 @@ import Foundation
 import OSLog
 
 extension UserDefaults {
-    private static let logger = Logger(subsystem: "com.heauton.app", category: "UserDefaults")
+    private static let logger = Logger(subsystem: AppConstants.Logging.subsystem, category: "UserDefaults")
 
     /// Shared UserDefaults instance for the App Group
     /// This allows both the main app and widget to access the same settings

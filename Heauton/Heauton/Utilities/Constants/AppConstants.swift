@@ -2,7 +2,7 @@ import Foundation
 
 /// Centralized constants for the application
 /// Use these constants instead of hardcoded strings throughout the app
-enum AppConstants {
+nonisolated enum AppConstants {
     // MARK: - App Group & Identifiers
 
     /// App Group identifier for sharing data between app and widget

@@ -149,7 +149,7 @@ struct ExerciseCard: View {
                     if exercise.isFavorite {
                         Image(systemName: "heart.fill")
                             .font(.caption)
-                            .foregroundStyle(.lsShadowGrey)
+                            .foregroundStyle(Color.lsShadowGrey)
                     }
                 }
 

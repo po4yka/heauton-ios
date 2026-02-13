@@ -10,7 +10,7 @@ import SwiftUI
 final class ScheduleSettingsViewModel {
     // MARK: - Dependencies
 
-    private let logger = Logger(subsystem: "com.heauton.app", category: "ScheduleSettings")
+    private let logger = Logger(subsystem: AppConstants.Logging.subsystem, category: "ScheduleSettings")
     private let modelContext: ModelContext
     private let quoteSchedulerService: QuoteSchedulerServiceProtocol
     private let notificationManager: NotificationManagerProtocol

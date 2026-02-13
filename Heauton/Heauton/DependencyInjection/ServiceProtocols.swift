@@ -295,7 +295,7 @@ protocol ExerciseServiceProtocol: Actor {
 // MARK: - Progress Tracker Service Protocols
 
 /// Activity type for progress tracking
-enum ActivityType: String, Codable, Sendable {
+nonisolated enum ActivityType: String, Codable, Sendable {
     case quotes
     case journaling
     case meditation
@@ -314,7 +314,7 @@ enum ActivityType: String, Codable, Sendable {
 }
 
 /// Progress statistics summary
-struct ProgressStats: Sendable {
+nonisolated struct ProgressStats: Sendable {
     var totalQuotes: Int
     var totalJournalEntries: Int
     var totalMeditationMinutes: Int

@@ -52,7 +52,7 @@ struct JournalDetailView: View {
                                     .padding(.horizontal, 12)
                                     .padding(.vertical, 6)
                                     .background(Color.lsPaleSlate.opacity(0.3))
-                                    .foregroundStyle(.appPrimary)
+                                    .foregroundStyle(Color.appPrimary)
                                     .clipShape(Capsule())
                             }
                         }
@@ -93,7 +93,7 @@ struct JournalDetailView: View {
                             "Favorite",
                             systemImage: entry.isFavorite ? "heart.fill" : "heart"
                         )
-                        .foregroundStyle(entry.isFavorite ? .accentFavorite : .primary)
+                        .foregroundStyle(entry.isFavorite ? Color.accentFavorite : Color.primary)
                     }
 
                     Button {

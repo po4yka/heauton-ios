@@ -32,7 +32,7 @@ actor QuoteFileStorage: QuoteFileStorageProtocol {
     // MARK: - Properties
 
     /// App Group identifier
-    private let appGroupIdentifier = "group.com.heauton.quotes"
+    private let appGroupIdentifier = AppConstants.appGroupIdentifier
 
     /// Subdirectory for quote text files
     private let quotesSubdirectory = "QuoteTexts"
@@ -164,7 +164,6 @@ actor QuoteFileStorage: QuoteFileStorageProtocol {
         }
 
         // Return relative path
-        let quotesDir = try quotesDirectoryURL()
         return fileURL.lastPathComponent
     }
 

@@ -80,7 +80,7 @@ struct ExerciseDetailView: View {
                         HStack(alignment: .top, spacing: 12) {
                             Text("\(index + 1)")
                                 .font(.firaCodeCaption(.semiBold))
-                                .foregroundStyle(.lsBrightSnow)
+                                .foregroundStyle(Color.lsBrightSnow)
                                 .frame(width: 24, height: 24)
                                 .background(Circle().fill(.appPrimary))
 
@@ -108,7 +108,7 @@ struct ExerciseDetailView: View {
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(.appPrimary)
-                .foregroundStyle(.lsBrightSnow)
+                .foregroundStyle(Color.lsBrightSnow)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             .padding()

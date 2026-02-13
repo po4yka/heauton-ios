@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 /// Search options for configuring search behavior
-struct SearchOptions: Sendable {
+nonisolated struct SearchOptions: Sendable {
     /// Maximum number of results to return
     let limit: Int
 

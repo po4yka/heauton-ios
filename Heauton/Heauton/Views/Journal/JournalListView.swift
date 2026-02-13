@@ -104,7 +104,7 @@ struct JournalEntryRow: View {
 
                         Text(mood.emoji)
                             .font(.caption)
-                            .foregroundStyle(.appTextSecondary)
+                            .foregroundStyle(Color.appTextSecondary)
                     }
                 }
             }
@@ -124,13 +124,13 @@ struct JournalEntryRow: View {
                 if !entry.tags.isEmpty {
                     Text(entry.tags.prefix(2).joined(separator: ", "))
                         .font(.firaCodeCaption())
-                        .foregroundStyle(.appPrimary)
+                        .foregroundStyle(Color.appPrimary)
                 }
 
                 if entry.isFavorite {
                     Image(systemName: "heart.fill")
                         .font(.caption2)
-                        .foregroundStyle(.accentFavorite)
+                        .foregroundStyle(Color.accentFavorite)
                 }
             }
         }

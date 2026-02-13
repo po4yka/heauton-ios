@@ -80,7 +80,7 @@ struct AppLockView: View {
                 if showError {
                     Text(errorMessage)
                         .font(.firaCodeCaption())
-                        .foregroundStyle(.lsShadowGrey)
+                        .foregroundStyle(Color.lsShadowGrey)
                         .padding(.horizontal)
                         .multilineTextAlignment(.center)
                 }

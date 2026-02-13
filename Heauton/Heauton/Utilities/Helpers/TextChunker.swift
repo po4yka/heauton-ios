@@ -1,7 +1,7 @@
 import Foundation
 
 /// Configuration for text chunking
-struct ChunkingConfig {
+nonisolated struct ChunkingConfig {
     /// Target words per chunk (will try to split near this size)
     let targetWordsPerChunk: Int
 
@@ -34,7 +34,7 @@ struct ChunkingConfig {
 }
 
 /// Represents a chunk of text with metadata
-struct TextChunk: Sendable {
+nonisolated struct TextChunk: Sendable {
     /// Unique identifier for the chunk
     let id: UUID
 
@@ -128,7 +128,7 @@ struct TextChunk: Sendable {
 /// // Result: 3-4 chunks of ~1500 words each
 /// // Each chunk ends at a sentence boundary when possible
 /// ```
-enum TextChunker {
+nonisolated enum TextChunker {
     /// Chunks text into smaller pieces based on word count
     /// - Parameters:
     ///   - text: The text to chunk

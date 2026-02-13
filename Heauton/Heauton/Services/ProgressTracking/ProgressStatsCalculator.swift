@@ -1,8 +1,8 @@
 import Foundation
 
 /// Helper for calculating progress statistics
-enum ProgressStatsCalculator {
-    struct ExerciseStats {
+nonisolated enum ProgressStatsCalculator {
+    nonisolated struct ExerciseStats {
         let meditationMinutes: Int
         let breathingSessions: Int
     }

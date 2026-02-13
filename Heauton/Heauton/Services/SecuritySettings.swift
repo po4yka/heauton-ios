@@ -8,7 +8,7 @@ import Security
 final class SecuritySettings {
     static let shared = SecuritySettings()
 
-    private let logger = Logger(subsystem: "com.heauton.app", category: "SecuritySettings")
+    private let logger = Logger(subsystem: AppConstants.Logging.subsystem, category: "SecuritySettings")
     private let keychainManager = KeychainSecurityManager()
 
     // MARK: - Settings
@@ -63,7 +63,7 @@ final class SecuritySettings {
 
 /// Manages security settings in Keychain with UserDefaults migration
 private final class KeychainSecurityManager {
-    private let logger = Logger(subsystem: "com.heauton.app", category: "KeychainSecurityManager")
+    private let logger = Logger(subsystem: AppConstants.Logging.subsystem, category: "KeychainSecurityManager")
     private let defaults = UserDefaults(suiteName: SharedModelContainer.appGroupIdentifier)
 
     // Keychain keys for security settings

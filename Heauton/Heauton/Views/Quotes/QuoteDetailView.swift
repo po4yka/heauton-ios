@@ -74,7 +74,7 @@ struct QuoteDetailView: View {
                             quote.isFavorite ? "Remove from Favorites" : "Add to Favorites",
                             systemImage: quote.isFavorite ? "heart.fill" : "heart"
                         )
-                        .foregroundStyle(quote.isFavorite ? .lsShadowGrey : .primary)
+                        .foregroundStyle(quote.isFavorite ? Color.lsShadowGrey : Color.primary)
                     }
                 }
             }

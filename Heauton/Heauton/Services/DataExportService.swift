@@ -5,7 +5,7 @@ import UniformTypeIdentifiers
 
 /// Service for exporting user data to various formats
 actor DataExportService: DataExportServiceProtocol {
-    private let logger = Logger(subsystem: "com.heauton.app", category: "DataExport")
+    private let logger = Logger(subsystem: AppConstants.Logging.subsystem, category: "DataExport")
     private let journalService: JournalServiceProtocol
     private let modelContext: ModelContext
 
@@ -334,7 +334,7 @@ actor DataExportService: DataExportServiceProtocol {
 
 // MARK: - Export Data Models
 
-struct CompleteBackup: Codable {
+nonisolated struct CompleteBackup: Codable {
     let metadata: BackupMetadata
     let journals: [ExportedJournalEntry]
     let quotes: [ExportedQuote]
@@ -343,13 +343,13 @@ struct CompleteBackup: Codable {
     let achievements: [ExportedAchievement]
 }
 
-struct BackupMetadata: Codable {
+nonisolated struct BackupMetadata: Codable {
     let version: String
     let exportDate: Date
     let appVersion: String
 }
 
-struct ExportedJournalEntry: Codable {
+nonisolated struct ExportedJournalEntry: Codable {
     let id: String
     let title: String
     let content: String
@@ -362,7 +362,7 @@ struct ExportedJournalEntry: Codable {
     let isFavorite: Bool
 }
 
-struct ExportedQuote: Codable {
+nonisolated struct ExportedQuote: Codable {
     let id: String
     let author: String
     let text: String
@@ -374,7 +374,7 @@ struct ExportedQuote: Codable {
     let lastAccessedAt: Date?
 }
 
-struct ExportedExercise: Codable {
+nonisolated struct ExportedExercise: Codable {
     let id: String
     let title: String
     let description: String
@@ -387,7 +387,7 @@ struct ExportedExercise: Codable {
     let createdAt: Date
 }
 
-struct ExportedProgressSnapshot: Codable {
+nonisolated struct ExportedProgressSnapshot: Codable {
     let id: String
     let date: Date
     let quotesAdded: Int
@@ -398,7 +398,7 @@ struct ExportedProgressSnapshot: Codable {
     let averageMood: String?
 }
 
-struct ExportedAchievement: Codable {
+nonisolated struct ExportedAchievement: Codable {
     let id: String
     let title: String
     let description: String
@@ -409,7 +409,7 @@ struct ExportedAchievement: Codable {
     let targetProgress: Int
 }
 
-struct StorageInfo: Sendable {
+nonisolated struct StorageInfo: Sendable {
     let journalEntryCount: Int
     let quoteCount: Int
     let exerciseCount: Int
@@ -428,7 +428,7 @@ struct StorageInfo: Sendable {
 
 // MARK: - Export Errors
 
-enum DataExportError: Error, LocalizedError {
+nonisolated enum DataExportError: Error, LocalizedError {
     case exportFailed(String)
     case encryptionError
     case fileWriteError

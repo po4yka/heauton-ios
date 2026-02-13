@@ -163,7 +163,7 @@ struct AchievementCard: View {
                 } else if let unlockedAt = achievement.unlockedAt {
                     Text("Unlocked \(unlockedAt.formatted(date: .abbreviated, time: .omitted))")
                         .font(.firaCodeCaption())
-                        .foregroundStyle(.lsGunmetal)
+                        .foregroundStyle(Color.lsGunmetal)
                 }
             }
 
@@ -172,7 +172,7 @@ struct AchievementCard: View {
             if achievement.isUnlocked {
                 Image(systemName: "checkmark.circle.fill")
                     .font(.title3)
-                    .foregroundStyle(.semanticSuccess)
+                    .foregroundStyle(Color.semanticSuccess)
             }
         }
         .padding()

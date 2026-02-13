@@ -11,7 +11,7 @@ struct InMemoryWarningBanner: View {
 
     // MARK: - State
 
-    private let logger = Logger(subsystem: "com.heauton.app", category: "InMemoryWarning")
+    private let logger = Logger(subsystem: AppConstants.Logging.subsystem, category: "InMemoryWarning")
 
     /// Controls the visibility of the detailed error sheet
     @State private var showErrorDetails = false
@@ -308,7 +308,7 @@ struct InMemoryWarningBanner: View {
                 return monitor
             }()
         ) {
-            Logger(subsystem: "com.heauton.app", category: "InMemoryWarning")
+            Logger(subsystem: AppConstants.Logging.subsystem, category: "InMemoryWarning")
                 .info("Export triggered")
         }
 

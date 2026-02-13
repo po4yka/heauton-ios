@@ -242,7 +242,10 @@ swiftformat .
 swiftlint lint --strict
 
 # Run tests
-swift test
+xcodebuild test \
+  -project Heauton/Heauton.xcodeproj \
+  -scheme Heauton \
+  -destination 'platform=iOS Simulator,name=iPhone 16'
 ```
 
 ## Implementation Status

@@ -1,7 +1,7 @@
 import Foundation
 
 /// Helper for calculating activity streaks
-enum StreakCalculator {
+nonisolated enum StreakCalculator {
     /// Checks if a snapshot has activity for the given type
     static func hasActivity(for type: ActivityType, in snapshot: ProgressSnapshot) -> Bool {
         switch type {

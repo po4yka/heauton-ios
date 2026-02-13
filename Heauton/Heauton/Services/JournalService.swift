@@ -3,7 +3,7 @@ import SwiftData
 
 /// Data Transfer Object for decrypted journal entries
 /// Prevents exposing decrypted content in the model layer
-struct DecryptedJournalEntry: Sendable {
+nonisolated struct DecryptedJournalEntry: Sendable {
     let entry: JournalEntry
     let decryptedContent: String
 

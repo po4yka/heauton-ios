@@ -146,7 +146,7 @@ struct TagInputView: View {
                             .padding(.horizontal, 10)
                             .padding(.vertical, 6)
                             .background(Color.appPrimary.opacity(0.1))
-                            .foregroundStyle(.appPrimary)
+                            .foregroundStyle(Color.appPrimary)
                             .clipShape(Capsule())
                         }
                     }

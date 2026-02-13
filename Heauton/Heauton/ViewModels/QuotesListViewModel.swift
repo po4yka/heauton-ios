@@ -10,7 +10,7 @@ import SwiftUI
 final class QuotesListViewModel {
     // MARK: - Dependencies
 
-    private let logger = Logger(subsystem: "com.heauton.app", category: "QuotesList")
+    private let logger = Logger(subsystem: AppConstants.Logging.subsystem, category: "QuotesList")
     private let modelContext: ModelContext
 
     // MARK: - Published State

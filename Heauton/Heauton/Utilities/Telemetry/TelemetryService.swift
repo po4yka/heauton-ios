@@ -267,7 +267,7 @@ actor TelemetryService {
 // MARK: - Supporting Types
 
 /// Telemetry event type
-enum TelemetryEventType: String, Codable {
+nonisolated enum TelemetryEventType: String, Codable {
     case error
     case featureUsage
     case performance
@@ -275,7 +275,7 @@ enum TelemetryEventType: String, Codable {
 }
 
 /// Severity level for events
-enum TelemetrySeverity: String, Codable {
+nonisolated enum TelemetrySeverity: String, Codable {
     case debug
     case info
     case warning
@@ -284,7 +284,7 @@ enum TelemetrySeverity: String, Codable {
 }
 
 /// Telemetry event structure
-struct TelemetryEvent: Codable {
+nonisolated struct TelemetryEvent: Codable {
     let id: UUID
     let type: TelemetryEventType
     let name: String
@@ -307,7 +307,7 @@ struct TelemetryEvent: Codable {
 }
 
 /// Error statistics summary
-struct ErrorStatistics {
+nonisolated struct ErrorStatistics {
     let totalErrors: Int
     let recentErrors: Int
     let errorsByType: [String: Int]
@@ -315,7 +315,7 @@ struct ErrorStatistics {
 }
 
 /// Feature usage statistics summary
-struct FeatureStatistics {
+nonisolated struct FeatureStatistics {
     let totalUsageEvents: Int
     let usageByFeature: [String: Int]
     let mostUsedFeature: String?

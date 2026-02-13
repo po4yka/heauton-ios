@@ -102,7 +102,7 @@ struct FilterView: View {
                     Button("Clear All Filters", role: .destructive) {
                         tempFilter = .default
                     }
-                    .foregroundStyle(.accentDanger)
+                    .foregroundStyle(Color.accentDanger)
                 }
             }
             .navigationTitle("Filter Quotes")

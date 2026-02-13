@@ -5,7 +5,7 @@ import Security
 
 /// Service for encrypting and decrypting sensitive data using AES-GCM
 actor EncryptionService: EncryptionServiceProtocol {
-    private let logger = Logger(subsystem: "com.heauton.app", category: "Encryption")
+    private let logger = Logger(subsystem: AppConstants.Logging.subsystem, category: "Encryption")
     private let keychainKey = "com.heauton.encryption.key"
 
     // Key caching with expiration

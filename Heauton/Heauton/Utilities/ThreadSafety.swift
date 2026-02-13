@@ -2,8 +2,7 @@ import Foundation
 
 /// Thread safety utilities for detecting cross-thread access in debug builds
 ///
-/// SwiftData models use @unchecked Sendable to bypass Swift's concurrency safety checks.
-/// This is a known limitation of SwiftData where @Model classes aren't automatically Sendable.
+/// SwiftData models are Sendable, but mutable model access is still concurrency-sensitive.
 /// These utilities help detect thread safety violations during development.
 enum ThreadSafety {
     /// Asserts that code is running on the main thread
@@ -53,11 +52,11 @@ enum ThreadSafety {
 /*
  SwiftData Thread Safety Notes:
 
- All SwiftData models in this project use `@unchecked Sendable` because:
+ SwiftData models are Sendable, but safe mutation rules still apply:
 
- 1. SwiftData's `@Model` macro does not automatically make classes Sendable
- 2. This is a known limitation of SwiftData (as of iOS 17/18)
- 3. The alternative would be not using SwiftData or wrapping all access in actors
+ 1. Model instances are mutable reference types
+ 2. Cross-context writes can still produce races if not isolated
+ 3. Mutation should remain in MainActor-isolated flows or a single owned context
 
  IMPORTANT RULES:
 

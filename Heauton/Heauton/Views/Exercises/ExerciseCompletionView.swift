@@ -20,7 +20,7 @@ struct ExerciseCompletionView: View {
                     VStack(spacing: 16) {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.system(size: 80))
-                            .foregroundStyle(.semanticSuccess)
+                            .foregroundStyle(Color.semanticSuccess)
 
                         Text("Exercise Complete!")
                             .font(.firaCodeTitle())
@@ -31,7 +31,7 @@ struct ExerciseCompletionView: View {
 
                         Text(session.formattedDuration)
                             .font(.firaCodeTitle3())
-                            .foregroundStyle(.appPrimary)
+                            .foregroundStyle(Color.appPrimary)
                     }
                     .padding(.top, 40)
 

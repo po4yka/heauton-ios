@@ -12,7 +12,7 @@ struct ScheduleSettingsView: View {
     @State private var showingPermissionSheet = false
     @State private var isSaving = false
 
-    private let logger = Logger(subsystem: "com.heauton.app", category: "ScheduleSettings")
+    private let logger = Logger(subsystem: AppConstants.Logging.subsystem, category: "ScheduleSettings")
 
     private var schedule: QuoteSchedule? {
         schedules.first

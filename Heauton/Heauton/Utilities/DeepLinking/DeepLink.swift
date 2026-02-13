@@ -27,7 +27,7 @@ import Foundation
 /// heauton://tab/home
 /// heauton://tab/journal
 /// ```
-enum DeepLink: Equatable, Hashable {
+nonisolated enum DeepLink: Equatable, Hashable {
     /// Navigate to a specific quote detail view
     case quote(UUID)
 

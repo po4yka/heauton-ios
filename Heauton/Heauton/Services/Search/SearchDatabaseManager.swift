@@ -3,7 +3,7 @@ import OSLog
 import SQLite3
 
 /// SQLite transient destructor constant
-private let sqliteTransient = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+nonisolated(unsafe) private let sqliteTransient = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
 
 /// Errors that can occur during database operations
 enum DatabaseError: Error, LocalizedError {
@@ -50,16 +50,19 @@ enum DatabaseError: Error, LocalizedError {
 actor SearchDatabaseManager: SearchDatabaseManagerProtocol {
     // MARK: - Properties
 
-    private let logger = Logger(subsystem: "com.heauton.app", category: "SearchDatabase")
+    private let logger = Logger(
+        subsystem: AppConstants.Logging.subsystem,
+        category: AppConstants.Logging.Category.searchDatabase
+    )
 
     /// Shared instance
     static let shared = SearchDatabaseManager()
 
     /// App Group identifier
-    private let appGroupIdentifier = "group.com.heauton.quotes"
+    private let appGroupIdentifier = AppConstants.appGroupIdentifier
 
     /// Database filename
-    private let databaseFilename = "quotes_search.db"
+    private let databaseFilename = AppConstants.Database.searchDatabaseFilename
 
     /// SQLite database connection
     private var db: OpaquePointer?

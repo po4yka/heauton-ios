@@ -2,7 +2,7 @@ import Foundation
 import OSLog
 
 /// Retry policy configuration for background tasks
-struct RetryPolicy {
+nonisolated struct RetryPolicy {
     /// Maximum number of retry attempts
     let maxAttempts: Int
 
@@ -79,7 +79,7 @@ struct RetryPolicy {
 /// - **Max delay cap**: Prevents indefinitely long waits
 /// - **Attempt limit**: Prevents infinite retry loops
 /// - **Immediate first attempt**: No initial delay
-enum RetryUtility {
+nonisolated enum RetryUtility {
     private static let logger = Logger(
         subsystem: AppConstants.Logging.subsystem,
         category: "Retry"
@@ -158,7 +158,7 @@ enum RetryUtility {
 
 // MARK: - Retry Errors
 
-enum RetryError: LocalizedError {
+nonisolated enum RetryError: LocalizedError {
     case maxAttemptsExceeded
     case operationCancelled
 

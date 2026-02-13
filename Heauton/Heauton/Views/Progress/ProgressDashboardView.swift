@@ -70,7 +70,7 @@ struct ProgressDashboardView: View {
                                 } label: {
                                     Text("View All")
                                         .font(.firaCodeCaption())
-                                        .foregroundStyle(.appPrimary)
+                                        .foregroundStyle(Color.appPrimary)
                                 }
                             }
                             .padding(.horizontal)
@@ -149,7 +149,7 @@ struct StreakCard: View {
             if streak > 0 {
                 Text("Keep it going!")
                     .font(.firaCodeSubheadline())
-                    .foregroundStyle(.appPrimary)
+                    .foregroundStyle(Color.appPrimary)
             } else {
                 Text("Start your journey today!")
                     .font(.firaCodeSubheadline())
@@ -203,9 +203,9 @@ struct AchievementCardCompact: View {
         VStack(spacing: 8) {
             Image(systemName: achievement.icon)
                 .font(.title)
-                .foregroundStyle(.lsSlateGrey)
+                .foregroundStyle(Color.lsSlateGrey)
                 .frame(width: 60, height: 60)
-                .background(Circle().fill(.lsPaleSlate.opacity(0.4)))
+                .background(Circle().fill(Color.lsPaleSlate.opacity(0.4)))
 
             Text(achievement.title)
                 .font(.firaCodeCaption(.semiBold))

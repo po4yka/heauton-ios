@@ -231,12 +231,19 @@ enum SharedModelContainer {
             logger.critical("Failed to create in-memory ModelContainer: \(error)")
             // Create the simplest possible container as absolute fallback
             do {
-                let schema = Schema(versionedSchema: HeautonSchemaV1.self)
-                return try ModelContainer(for: schema)
+                let emergencyConfiguration = ModelConfiguration(
+                    schema: Schema(versionedSchema: HeautonSchemaV1.self),
+                    isStoredInMemoryOnly: true
+                )
+                return try ModelContainer(
+                    for: Schema(versionedSchema: HeautonSchemaV1.self),
+                    configurations: [emergencyConfiguration]
+                )
             } catch {
                 // If even this fails, the app cannot continue
-                // This is an unrecoverable error that should never occur
-                preconditionFailure("Unable to create even a basic ModelContainer: \(error)")
+                // This is an unrecoverable error that should never occur.
+                logger.fault("Unable to create any ModelContainer: \(String(describing: error))")
+                fatalError("Critical storage initialization failure")
             }
         }
     }

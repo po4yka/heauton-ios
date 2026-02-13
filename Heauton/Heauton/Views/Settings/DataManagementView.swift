@@ -173,7 +173,7 @@ struct DataManagementView: View {
             VStack(alignment: .leading, spacing: 12) {
                 Label("Your Data is Private", systemImage: "lock.shield.fill")
                     .font(.firaCodeSubheadline(.medium))
-                    .foregroundStyle(.appPrimary)
+                    .foregroundStyle(Color.appPrimary)
 
                 Text(
                     "All exports are saved locally on your device. " +

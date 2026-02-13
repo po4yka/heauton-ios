@@ -54,7 +54,7 @@ import Foundation
 /// - Handles all Unicode planes (BMP, SMP, SIP, TIP)
 /// - Preserves emoji and special characters
 /// - Safe for all languages (Latin, Cyrillic, Greek, CJK, etc.)
-enum TextNormalizer {
+nonisolated enum TextNormalizer {
     /// Normalizes text for indexing and search
     /// - Parameter text: The text to normalize
     /// - Returns: Normalized text suitable for indexing
@@ -83,14 +83,14 @@ private extension String {
     /// Applies Unicode NFKC (Normalization Form KC) normalization
     /// This decomposes characters and then recomposes them canonically
     /// - Returns: NFKC normalized string
-    func applyingNFKCNormalization() -> String {
+    nonisolated func applyingNFKCNormalization() -> String {
         precomposedStringWithCompatibilityMapping
     }
 
     /// Removes diacritics (accent marks) from characters
     /// For example: "café" becomes "cafe", "naïve" becomes "naive"
     /// - Returns: String with diacritics removed
-    func removingDiacritics() -> String {
+    nonisolated func removingDiacritics() -> String {
         folding(
             options: .diacriticInsensitive,
             locale: .current
@@ -100,7 +100,7 @@ private extension String {
 
 // MARK: - Token Extraction
 
-extension TextNormalizer {
+nonisolated extension TextNormalizer {
     /// Extracts searchable tokens from text
     /// - Parameter text: The text to tokenize
     /// - Returns: Array of normalized tokens
@@ -125,7 +125,7 @@ extension TextNormalizer {
 
 // MARK: - Text Cleaning
 
-extension TextNormalizer {
+nonisolated extension TextNormalizer {
     /// Cleans text by removing extra whitespace and normalizing line breaks
     /// - Parameter text: The text to clean
     /// - Returns: Cleaned text

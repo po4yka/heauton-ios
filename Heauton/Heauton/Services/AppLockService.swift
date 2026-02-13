@@ -4,7 +4,7 @@ import OSLog
 
 /// Service for managing app lock and biometric authentication
 actor AppLockService: AppLockServiceProtocol {
-    private let logger = Logger(subsystem: "com.heauton.app", category: "AppLock")
+    private let logger = Logger(subsystem: AppConstants.Logging.subsystem, category: "AppLock")
 
     private var isUnlocked = false
     private var lastUnlockTime: Date?

@@ -5,7 +5,7 @@ import UserNotifications
 
 /// Manages notifications for daily quote delivery
 actor NotificationManager: NotificationManagerProtocol {
-    private let logger = Logger(subsystem: "com.heauton.app", category: "Notifications")
+    private let logger = Logger(subsystem: AppConstants.Logging.subsystem, category: "Notifications")
     private let notificationCenter = UNUserNotificationCenter.current()
     private let quoteNotificationIdentifier = "daily-quote"
 

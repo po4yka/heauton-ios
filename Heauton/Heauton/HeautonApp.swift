@@ -13,10 +13,13 @@ struct HeautonApp: App {
     @State private var deepLinkCoordinator = DeepLinkCoordinator()
 
     // Background task identifier
-    private let quoteRefreshTaskIdentifier = "com.heauton.quotes.refresh"
+    private let quoteRefreshTaskIdentifier = AppConstants.backgroundTaskIdentifier
 
     // Logger
-    private let logger = Logger(subsystem: "com.heauton.app", category: "App")
+    private let logger = Logger(
+        subsystem: AppConstants.Logging.subsystem,
+        category: AppConstants.Logging.Category.app
+    )
 
     // Track background refresh failure count
     @State private var backgroundRefreshFailureCount = 0

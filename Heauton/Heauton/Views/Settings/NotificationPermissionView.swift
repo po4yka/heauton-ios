@@ -23,7 +23,7 @@ struct NotificationPermissionView: View {
                 // Icon
                 Image(systemName: "bell.badge.fill")
                     .font(.system(size: 60))
-                    .foregroundStyle(.appPrimary.gradient)
+                    .foregroundStyle(Color.appPrimary.gradient)
 
                 // Title
                 Text("Enable Notifications")
@@ -42,7 +42,7 @@ struct NotificationPermissionView: View {
                 if authorizationStatus == .granted {
                     Label("Notifications Enabled", systemImage: "checkmark.circle.fill")
                         .font(.headline)
-                        .foregroundStyle(.semanticSuccess)
+                        .foregroundStyle(Color.semanticSuccess)
                         .padding()
                         .background(Color.semanticSuccess.opacity(0.1))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -50,7 +50,7 @@ struct NotificationPermissionView: View {
                     VStack(spacing: 12) {
                         Label("Notifications Denied", systemImage: "xmark.circle.fill")
                             .font(.headline)
-                            .foregroundStyle(.semanticError)
+                            .foregroundStyle(Color.semanticError)
 
                         Text("Please enable notifications in Settings")
                             .font(.caption)

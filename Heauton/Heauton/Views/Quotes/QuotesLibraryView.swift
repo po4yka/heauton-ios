@@ -13,7 +13,7 @@ struct QuotesLibraryView: View {
     @State private var searchText = ""
     @State private var viewMode: ViewMode = .list
 
-    private let logger = Logger(subsystem: "com.heauton.app", category: "QuotesLibrary")
+    private let logger = Logger(subsystem: AppConstants.Logging.subsystem, category: "QuotesLibrary")
 
     enum ViewMode {
         case list, grid
@@ -64,7 +64,7 @@ struct QuotesLibraryView: View {
                         .overlay(alignment: .topTrailing) {
                             if filter.isActive {
                                 Circle()
-                                    .fill(.lsShadowGrey)
+                                    .fill(Color.lsShadowGrey)
                                     .frame(width: 8, height: 8)
                                     .offset(x: 4, y: -4)
                             }
@@ -120,14 +120,14 @@ struct QuotesLibraryView: View {
     }
 
     private func applyFilter() {
-        do {
-            let repository = SwiftDataQuotesRepository(modelContext: modelContext)
-            Task {
+        let repository = SwiftDataQuotesRepository(modelContext: modelContext)
+        Task {
+            do {
                 filteredQuotes = try await repository.fetchQuotes(filter: filter)
+            } catch {
+                logger.error("Error applying filter: \(error.localizedDescription)")
+                filteredQuotes = allQuotes
             }
-        } catch {
-            logger.error("Error applying filter: \(error.localizedDescription)")
-            filteredQuotes = allQuotes
         }
     }
 }
@@ -153,7 +153,7 @@ private struct QuoteRowView: View {
                 if quote.isFavorite {
                     Image(systemName: "heart.fill")
                         .font(.caption)
-                        .foregroundStyle(.accentFavorite)
+                        .foregroundStyle(Color.accentFavorite)
                 }
             }
         }
